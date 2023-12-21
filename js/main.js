@@ -1,20 +1,3 @@
-$(function () {
-  $(".bx").bxSlider({
-    minSlides: 3,
-    maxSlides: 6,
-    slideWidth: 800,
-    slideMargin: 15,
-    ticker: true,
-    speed: 100000,
-  });
-});
-
-
-
-
-
-
-
 $(document).ready(function(){
     
     $(window).scroll(function(){

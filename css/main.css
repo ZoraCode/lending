@@ -11,99 +11,15 @@
     font-weight: normal;
     font-style: normal;
 }
-aside{
-  position: sticky;
-  top: 0;
-  left: 0;
-}
-aside img{
-  margin-right: 85%;
-}
 
-body{
-  width:100%;
-  max-width:100%;
-  background: url(../image/images/pattern.png) center repeat;
-  background-size:cover ;
-  padding:150px 0;
-  text-align: center;
-  color:#353535;
-  position:relative;
-}
-/* root */
-
-.mt1{
-  margin-bottom: 50px;
-}
-
-.mt2{
-  margin-bottom: 90px;
-}
-
-.mt3{
-  margin-bottom: 160px;
-}
-
-.mt4{
-  margin-bottom: 250px;
-}
-
-
-.sec1{
-  height: 7300px;
-}
-
-.background{
-  position: absolute;
-  top: 0; bottom: 0; right: 0; left: 0;
-  /* height: 5500px; */
-  z-index: -10;
-}
-
-.hello{
-  margin-top: 300px;
-  text-align: center;
-  font-family: 'BinggraeSamanco-Bold';
-  font-weight: normal;
-  font-size: 30px;
-  line-height: 45px;
-  color: #674c3f;
-}
-.imgtext, .imgtext img{
-  display: block;
-  margin: 0 auto;
-  /* margin-top: 50px; */
-}
-.imgtext2, .imgtext2 img{
-  display: block;
-  margin: 0 auto;
-  /* margin-top: 450px; */
-}
-
-.title{
-  text-align: center;
-  margin-top: 150px;
-}
-
-.bx{
-  margin-top: 90px;
-  }
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-/* 회원신청 */
+/* #txt1{
+  position:fixed;
+  top:10px;
+  right:10px;
+  font-size:35px;
+  color:#fff;
+  z-index: 999;
+} */
 #wrap{
     width:100%;
     max-width:100%;
@@ -122,16 +38,12 @@ section{
 
 
 label{display:block; font-size:18px; margin-top:20px; font-weight: bold; color:#a20016}
-
-
-
 #p8{
     width:100%;
     max-width:100%;
-    /* background: url(../image/pc_05.png) center center no-repeat; */
+    background: url(../image/pc_05.png) center center no-repeat;
     background-size:cover ;
-    /* padding:150px 0; */
-    padding-bottom: 150px;
+    padding:150px 0;
     text-align: center;
     color:#353535;
     position:relative;
