@@ -51,7 +51,7 @@ $(document).ready(function(){
     $("#p5 .img5").attr('src', 'image/mo_05.png');
     $("#p6 .img6").attr('src', 'image/mo_06.png');
     $("#p7 img").attr('src', 'image/mo_07.png');
-    $("#p8 img").attr('src', 'image/mo_08.png');
+    $("#p8 img").attr('src', 'image/back.png');
     $(".result img").attr('src', 'image/re-mo.png');
     
     } else {
