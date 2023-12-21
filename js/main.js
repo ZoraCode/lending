@@ -44,7 +44,7 @@ $(document).ready(function(){
     if (window.innerWidth < 720) {  
     
     /* 스크립트내용*/ 
-    $("#p1 img").attr('src', 'image/mo_01.png');
+    $("#p1 img").attr('src', 'image/Mobile.png');
     $("#p2 img").attr('src', 'image/mo_02.png');
     $("#p3 .img3").attr('src', 'image/mo_03.png');
     $("#p4 .img4").attr('src', 'image/mo_04.png');
