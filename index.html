@@ -154,9 +154,10 @@
 <meta property="og:description" content="본 프로젝트는 선착순 100명에게만 제공 되며, 모집이 완료 되면 바로 진행합니다." />
 <meta name="Keywords" content="주식, 무료리딩, 수익률, 장기상품, 환불 요청, 투자, 고수익, 올인원 ,JL, 제이엘, 제이엘투자그룹, 주식강의. 시장분석, 종목분석, 매수, 매도, 주식투자, h2o, 무료체험">
 
-<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.css"/>
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/bxslider/4.2.12/jquery.bxslider.css">
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.1/jquery.min.js"></script>
+<script src="https://cdn.jsdelivr.net/bxslider/4.2.12/jquery.bxslider.min.js"></script>
 
-<script src="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.js"></script>
 
 <link rel="stylesheet" href="css/main.css">
 <link rel="stylesheet" href="css/swiper.css">
@@ -167,6 +168,10 @@
 	function MM_openBrWindow(theURL,winName,features){ 
 		window.open(theURL,winName,features);
 	}
+
+	$(document).ready(function(){
+    $('.slider').bxSlider();
+  });
 </script>
 <style>
 	.material-symbols-outlined {
@@ -204,9 +209,9 @@
     <!-- <p id="txt1">0</p> -->
 	<div id="wrap">
 
-		<!-- <aside>
+	<aside>
 		<img src="image/images/side.png" alt="">
-	</aside> -->
+	</aside>
 
 	<div class="background">
 		<img src="image/images/backA.png" alt="">
@@ -243,30 +248,14 @@
 				</div>
 
 
-				
-				<div class="sss">
-					<!-- Slider main container -->
-						<div class="swiper">
-							<!-- Additional required wrapper -->
-							<div class="swiper-wrapper">
-								<!-- Slides -->
-								<div class="swiper-slide"><img src="image/images/s1.png" alt=""></div>
-								<div class="swiper-slide"><img src="image/images/s2.png" alt=""></div>
-								<div class="swiper-slide"><img src="image/images/s3.png" alt=""></div>
-								<div class="swiper-slide"><img src="image/images/s4.png" alt=""></div>
-								<div class="swiper-slide"><img src="image/images/s5.png" alt=""></div>
-							</div>
-							<!-- If we need pagination -->
-							<div class="swiper-pagination"></div>
-
-							<!-- If we need navigation buttons -->
-							<div class="swiper-button-prev"></div>
-							<div class="swiper-button-next"></div>
-
-							<!-- If we need scrollbar -->
-							<div class="swiper-scrollbar"></div>
-						</div>
+				<div class="slider bx">
+					<div class="item"><img src="image/images/s1.png" alt=""></div>
+					<div class="item"><img src="image/images/s2.png" alt=""></div>
+					<div class="item"><img src="image/images/s3.png" alt=""></div>
+					<!-- <div class="item"><img src="image/images/s4.png" alt=""></div> -->
+					<div class="item"><img src="image/images/s5.png" alt=""></div>
 				</div>
+				
 
 				<div class="imgtext">
 					<img src="image/images/box.png" alt="">

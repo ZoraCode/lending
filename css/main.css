@@ -14,7 +14,10 @@
 aside{
   position: sticky;
   top: 0;
-
+  left: 0;
+}
+aside img{
+  margin-right: 85%;
 }
 
 body{
@@ -47,18 +50,18 @@ body{
 
 
 .sec1{
-  height: 8000px;
+  height: 7300px;
 }
 
 .background{
   position: absolute;
   top: 0; bottom: 0; right: 0; left: 0;
-  height: 5500px;
+  /* height: 5500px; */
   z-index: -10;
 }
 
 .hello{
-  margin-top: 900px;
+  margin-top: 300px;
   text-align: center;
   font-family: 'BinggraeSamanco-Bold';
   font-weight: normal;
@@ -82,7 +85,7 @@ body{
   margin-top: 150px;
 }
 
-.sss{
+.bx{
   margin-top: 90px;
   }
 
