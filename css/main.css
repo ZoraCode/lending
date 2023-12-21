@@ -1,0 +1,432 @@
+@import url(common.css);
+@import url(//fonts.googleapis.com/earlyaccess/notosanskr.css);
+@import url('https://fonts.googleapis.com/css2?family=Nanum+Gothic:wght@400;700;800&display=swap');
+/*font-family: 'Nanum Gothic', sans-serif;*/
+@import url('https://fonts.googleapis.com/css2?family=Noto+Sans+KR:wght@100;300;400;500;700;900&display=swap');
+/*font-family: 'Noto Sans KR', sans-serif;*/
+
+@font-face {
+    src: url('https://cdn.jsdelivr.net/gh/projectnoonnu/noonfonts_2001@1.1/GmarketSansMedium.woff') format('woff');
+    font-family: 'GmarketSansMedium';
+    font-weight: normal;
+    font-style: normal;
+}
+
+/* #txt1{
+  position:fixed;
+  top:10px;
+  right:10px;
+  font-size:35px;
+  color:#fff;
+  z-index: 999;
+} */
+#wrap{
+    width:100%;
+    max-width:100%;
+    font-family: 'Nanum Gothic', sans-serif;
+    letter-spacing: -0.3px;
+    color:#222;
+}
+
+section{
+    position: relative;
+    width:100%;
+    max-width:100%;
+    overflow: hidden;
+}
+.img{width:100%;max-width:100%;}
+
+
+label{display:block; font-size:18px; margin-top:20px; font-weight: bold; color:#a20016}
+#p8{
+    width:100%;
+    max-width:100%;
+    background: url(../image/pc_05.png) center center no-repeat;
+    background-size:cover ;
+    padding:150px 0;
+    text-align: center;
+    color:#353535;
+    position:relative;
+}
+.men{
+  position:absolute;
+  top:23%;
+  right:9%;
+}
+.p8-in{
+  width:680px;
+  padding:80px 0;
+  background: #fff;
+  margin:0 auto;
+  box-shadow: 0px 0px 20px #d8d8d8;
+}
+legend{
+  padding-top:0px;
+  font-family: 'Noto Sans KR',sans-serif;
+  font-weight: 600;
+  font-size:2.5rem;
+  letter-spacing: -1px;
+}
+.form-sub{
+  font-size:1.250rem;
+  margin-top:20px;
+  line-height: 30px;
+}
+.red{
+  color:#a20016;
+  font-weight: 800;
+}
+#NAME{
+  border:1px solid #bebebe;
+  box-sizing: border-box;
+  width:480px;
+  height:60px;
+  margin:0px auto;
+  margin-top:20px;
+  margin-bottom:20px;
+  font-size: 1rem;
+}
+#NAME2{
+  border:1px solid #bebebe;
+  box-sizing: border-box;
+  width:230px;
+  height:60px;
+  margin:0px auto;
+  margin-top:20px;
+  margin-bottom:20px;
+  font-size: 1rem;
+}
+#NAME4{
+  border:1px solid #bebebe;
+  box-sizing: border-box;
+  width:480px;
+  height:60px;
+  margin:0px auto;
+  margin-top:20px;
+  margin-bottom:20px;
+  font-size: 1rem;
+}
+select{
+  border:1px solid #bebebe;
+  box-sizing: border-box;
+  width:100px;
+  text-align: center;
+  height: 60px;
+  font-size: 1rem;
+}
+
+.option-box{
+  width:73%;
+  max-width:73%;
+  margin:0 auto;
+}
+.option-box:after{display:block; content:''; clear:both;}
+.select2{
+  width:50%;
+  float:left;
+  /* background: #222; */
+}
+.select2:after{display:block; content:''; clear:both;}
+#HP2{
+  border:1px solid #bebebe;
+  width:185px;
+  height: 60px;
+  font-size: 1rem;
+}
+#HP3{
+  border:1px solid #bebebe;
+  box-sizing: border-box;
+  width:185px;
+  height: 60px;
+  font-size: 1rem;
+}
+input::placeholder{
+  padding-left: 15px;
+}
+.agree-box{
+  width:480px;
+  margin:0 auto;
+  text-align: left;
+  margin-top:10px;
+}
+.formRight{
+  width:480px;
+  margin:0 auto;
+  margin-top:20px;
+  padding:30px 0;
+  background:#444;
+  color:#fff;
+  font-family: 'Noto Sans KR',sans-serif;
+  font-weight: 500;
+  font-size:1.725rem;
+}
+
+/* 퀵상담 */
+.form-box2{
+  width:1200px;
+  height:130px;
+  /* background: #ff5485; */
+  margin:0 auto;
+}
+.q-left{
+  position:relative;
+  top:25px;
+  float:left;
+}
+.q-left:after{display:block; content:''; clear:both;}
+.quick_bottom_wrap{
+  display:none;
+  position:fixed;
+  left:0;
+  right:0;
+  bottom:0;
+  z-index:999;
+  text-align:center;
+  box-sizing:border-box;
+  height:140px;
+  background: #0f0f0f;
+  background: url(../image/q.png);
+  background-size: cover;
+}
+
+.quick_form{
+  width:100%;
+  margin:0 auto;
+  position:relative;
+  box-sizing:border-box;
+}
+.quick_form:after{display:block; content:''; clear:both;}
+.quick_form input[type="text"],
+.quick_form input[type="password"],
+.quick_form select {
+  border:none; height:40px;
+  box-sizing:border-box;
+  padding:3px;
+  vertical-align:middle;
+  margin:0 5px;
+}
+.quick_form .form-agree{
+  color:#fff;
+  /*padding:0 10px;*/
+  position: absolute;
+  top: 100px;
+  left: 28.7%;
+}
+.quick_form .form-agree a{color:#fff; font-weight:bold; text-decoration:underline;}
+
+.quick_form .form-agree1{color:#fff; /*padding:0 10px;*/position: relative;top: 12px;}
+.quick_form .form-agree1 a{color:#fff; font-weight:bold; text-decoration:underline;}
+
+.form-title{float:left; padding:39px 26px 20px 19px; line-height:40px; color:#fff; font-size:20px; font-weight:bold;}
+.form-input{ padding:20px;position:relative;left: 5%;}
+.form-command{
+  /*position:absolute;
+  right:0; top:0;*/
+  width:14%;
+  float:right; 
+  position:relative;
+  bottom:25px;
+}
+/*.form-command button{width:260px; height:80px; background-color:#F56588; color:#fff; font-size:20px; border:none;}*/
+
+input:focus {outline:none;}
+#q-NAME{
+  position:relative;
+  top:10px;
+  width:23%;
+  max-width:23%;
+  height:53px;
+  float:left;
+}
+#hp{
+  position: relative;
+  left:6%;
+  width:160%;
+  max-width:160%;
+  height:53px;
+}
+.row{
+  clear: both;
+}
+/*푸터----------*/
+footer{
+    width:100%;
+    max-width:100%;
+    height:150px;
+    background: rgb(10, 10, 10);
+}
+.f-in{
+    padding-top:30px;
+    width:100%;
+    max-width:1200px;
+    height:auto;
+    margin: 0 auto;
+}
+.f-logo{
+    float:left;
+    width:20%;
+}
+.f-logo{
+    text-align: center;
+    margin-left:20%;
+}
+.f-in .f-logo img{
+    width:30%;
+    max-width:30%;
+}
+.f-text{
+    margin-top:0.5%;
+    line-height: 25px;;
+    color:#888;
+}
+
+/*result*/
+.result{width:100%;max-width:100%;height:100vh;}
+.result img{width:100%;max-width:100%;}
+@media (max-width: 1600px) {
+  .men{display:none;}
+}
+@media (max-width: 1200px) {
+ 
+}
+
+@media (max-width: 720px) {
+  .gallery1{display:none;}
+  .quick_bottom_wrap{display:none;}
+
+
+  .p8-in{
+    width:90%;
+    max-width:90%;
+    overflow: hidden;
+    padding:60px 0;
+    background: #fff;
+    margin:0 auto;
+    box-shadow: 0px 0px 20px #d8d8d8;
+  }
+  .formBox{
+    width:90%;
+    max-width:90%;
+    margin:0 auto;
+  }
+  legend{
+    padding-top:0px;
+    font-family: 'Noto Sans KR',sans-serif;
+    font-weight: 600;
+    font-size:1.725rem;
+    letter-spacing: -1px;
+  }
+  .form-sub{
+    font-size:1rem;
+    margin-top:10px;
+    line-height: 26px;
+  }
+  .red{
+    color:#a20016;
+    font-weight: 800;
+  }
+  #NAME{
+    width:100%;
+    max-width:100%;
+    height:65px;
+    margin-bottom: 10px;
+  }
+  select{
+    width:30%;
+    max-width:30%;
+    text-align: center;
+    height: 68px;
+    font-size: 1rem;
+  }
+  .option-box{
+    width:100%;
+    max-width:100%;
+  }
+  .select2{
+    width:100%;
+    float:left;
+    /* background: #222; */
+    /* background: #222; */
+  }
+  .select3{
+    width:100%;
+    float:left;
+    /* background: #222; */
+    /* background: #222; */
+  }
+  #NAME2{
+    border:1px solid #bebebe;
+    box-sizing: border-box;
+    width:100%;
+    max-width:100%;
+    height:60px;
+    margin:0px auto;
+    margin-top:20px;
+    margin-bottom:20px;
+    font-size: 1rem;
+  }
+  #NAME4{
+    border:1px solid #bebebe;
+    box-sizing: border-box;
+    width:100%;
+    max-width:100%;
+    height:60px;
+    margin:0px auto;
+    margin-top:20px;
+    margin-bottom:20px;
+    font-size: 1rem;
+  }
+  #HP2{
+    border:1px solid #bebebe;
+    width:33.33%;
+    max-width:33.33%;
+    height: 65px;
+    font-size: 1rem;
+  }
+  #HP3{
+    width:33.33%;
+    max-width:33.33%;
+    height: 65px;
+    font-size: 1rem;
+  }
+  input::placeholder{
+    padding-left: 15px;
+  }
+  .agree-box{
+    width:100%;
+    max-width:100%;
+    font-size: 0.7rem;
+    margin:0 auto;
+    text-align: left;
+    margin-top:15px;
+  }
+  .formRight{
+    width:100%;
+    max-width:100%;
+    margin:0 auto;
+    margin-top:20px;
+    padding:15px 0;
+    background:#444;
+    color:#fff;
+    font-family: 'Noto Sans KR',sans-serif;
+    font-weight: 500;
+    font-size:1.125rem;
+  }
+
+    .f-in{
+        width:100%;
+        max-width:90%;
+
+    }
+
+    .f-logo{
+        margin:0;
+        display:none;
+    }
+
+  }
+
+
+
+
+

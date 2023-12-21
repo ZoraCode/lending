@@ -1,0 +1,373 @@
+<!--#include virtual="/ad/common/inc/config_basic.asp"-->
+<%
+
+	'=== Open DB =================================================================
+	Set db = Open_DB(main_db)
+
+	'=== Request Values ==========================================================
+	l_idkey	= trim(request("l_idkey"))
+
+	cnt_ymd = Date()
+
+	ip = request.ServerVariables("REMOTE_HOST")
+	'--- Get Info ----------------------------------------------------------------
+	'광고주 정보에서 필요한 키값 GET
+	sql = " SELECT idkey, m_idkey, c1_idkey, c2_idkey "
+	sql = sql & " FROM tb_ad_l "
+	sql = sql & " WHERE use_yn = 'Y' "
+	sql = sql & " AND idkey = '" & l_idkey & "' "
+	'Response.Write sql & "<br>"
+	Set objDB = db.execute(sql)
+	if Not( objDB.EOF or objDB.BOF ) Then
+		'날짜별 노출수에서 유무 확인
+		sql = " SELECT COUNT(*) "
+		sql = sql & " FROM tb_ad_l_hits "
+		sql = sql & " WHERE m_idkey = '" & objDB("m_idkey") & "' "
+		sql = sql & " AND c1_idkey = '" & objDB("c1_idkey") & "' "
+		sql = sql & " AND c2_idkey = '" & objDB("c2_idkey") & "' "
+		sql = sql & " AND ymd = '"& cnt_ymd & "'"
+		'Response.Write sql & "<Br>"
+		'Response.end
+		Set objDB1 = db.execute(sql)
+			If objDB1(0) = 0 Then
+				'없는 경우 INSERT
+				sql = "INSERT INTO tb_ad_l_hits ( "
+				sql = sql & "  m_idkey "
+				sql = sql & " ,c1_idkey "
+				sql = sql & " ,c2_idkey "
+				sql = sql & " ,l_idkey "
+				sql = sql & " ,ymd "
+				sql = sql & " ,view_cnt "
+				sql = sql & " ,write_date "
+				sql = sql & " ) VALUES ( "
+				sql = sql & "  N'"& objDB("m_idkey") &"' "
+				sql = sql & " ,N'"& objDB("c1_idkey") &"' "
+				sql = sql & " ,N'"& objDB("c2_idkey") &"' "
+				sql = sql & " ,N'"& l_idkey &"' "
+				sql = sql & " ,N'"& cnt_ymd &"' "
+				sql = sql & " ,N'1' "
+				sql = sql & " ,CONVERT(CHAR(23),GETDATE(),21) "
+				sql = sql & " ) "
+				'Response.Write sql & "<Br>"
+				'Response.end
+				db.Execute sql
+				err_cnt = err_cnt + db.Errors.Count
+			Else
+				'있는경우 UPDATE
+				sql =" UPDATE tb_ad_l_hits SET "
+				sql= sql & " view_cnt  = view_cnt + 1 "
+				sql= sql & ",modify_date = CONVERT(CHAR(23),GETDATE(),21) "
+				sql = sql & " WHERE m_idkey = '" & objDB("m_idkey") & "' "
+				sql = sql & " AND c1_idkey = '" & objDB("c1_idkey") & "' "
+				sql = sql & " AND c2_idkey = '" & objDB("c2_idkey") & "' "
+				sql = sql & " AND ymd = '"& cnt_ymd & "'"
+				'Response.Write sql & "<Br>"
+				'Response.end
+				db.Execute sql
+				err_cnt = err_cnt + db.Errors.Count
+			End If
+
+			'history 테이블에 iNSERT
+			sql = " INSERT INTO tb_ad_l_hits_hist ( "
+			sql = sql & " m_idkey "
+			sql = sql & " ,c1_idkey "
+			sql = sql & " ,c2_idkey "
+			sql = sql & " ,l_idkey "
+			sql = sql & " ,ymd "
+			sql = sql & " ,ip "
+			sql = sql & " ,write_date "
+			sql = sql & " ) VALUES ( "
+			sql = sql & "  N'"& objDB("m_idkey") &"' "
+			sql = sql & " ,N'"& objDB("c1_idkey") &"' "
+			sql = sql & " ,N'"& objDB("c2_idkey") &"' "
+			sql = sql & " ,N'"& l_idkey &"' "
+			sql = sql & " ,N'"& cnt_ymd &"' "
+			sql = sql & " ,N'"& ip &"' "
+			sql = sql & " ,CONVERT(CHAR(23),GETDATE(),21) "
+			sql = sql & " ) "
+			'Response.Write sql & "<Br>"
+			'Response.end
+			db.Execute sql
+			err_cnt = err_cnt + db.Errors.Count
+
+			'총 조회수 증가
+			sql =" UPDATE tb_ad_l SET "
+			sql= sql & " view_cnt  = view_cnt + 1 "
+			sql= sql & ",modify_date = CONVERT(CHAR(23),GETDATE(),21) "
+			sql = sql & " WHERE idkey = '" & l_idkey & "' "
+			'Response.Write sql & "<Br>"
+			'Response.end
+			db.Execute sql
+			err_cnt = err_cnt + db.Errors.Count
+	end If
+	objDB.close
+
+%>
+<!doctype html>
+<html lang="ko">
+<head>
+	<!-- Google Tag Manager -->
+	<script>
+		(function (w, d, s, l, i) {
+			w[l] = w[l] || []; w[l].push({
+				'gtm.start':
+					new Date().getTime(), event: 'gtm.js'
+			}); var f = d.getElementsByTagName(s)[0],
+				j = d.createElement(s), dl = l != 'dataLayer' ? '&l=' + l : ''; j.async = true; j.src =
+					'https://www.googletagmanager.com/gtm.js?id=' + i + dl; f.parentNode.insertBefore(j, f);
+		})(window, document, 'script', 'dataLayer', 'GTM-NX7MVQM');</script>
+	<!-- End Google Tag Manager -->
+
+	<!-- Google tag (gtag.js) -->
+	<script async src="https://www.googletagmanager.com/gtag/js?id=AW-11218933086"></script>
+	<script>
+	window.dataLayer = window.dataLayer || [];
+	function gtag(){dataLayer.push(arguments);}
+	gtag('js', new Date());
+
+	gtag('config', 'AW-11218933086');
+	</script>
+
+	<!-- Event snippet for Website traffic conversion page -->
+	<script>
+		gtag('event', 'conversion', {'send_to': 'AW-11218933086/HLaSCLuw76oYEN6qzeUp'});
+	</script>
+	
+
+
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no" >
+<meta property="og:title" content="선택받은 100명에게만 급등주 제공">
+<meta property="og:image" content="https://jlinvestad.com/ad/100/sm.png">
+<meta name="viewport" content="width=device-width, initial-scale=1, minimum-scale=1, maximum-scale=1, user-scalable=no">
+<title>급등주 : 100 프로젝트</title> 
+<meta property="og:description" content="본 프로젝트는 선착순 100명에게만 제공 되며, 모집이 완료 되면 바로 진행합니다." />
+<meta name="Keywords" content="주식, 무료리딩, 수익률, 장기상품, 환불 요청, 투자, 고수익, 올인원 ,JL, 제이엘, 제이엘투자그룹, 주식강의. 시장분석, 종목분석, 매수, 매도, 주식투자, h2o, 무료체험">
+<link rel="stylesheet" href="css/main.css">
+<link rel="stylesheet" href="css/swiper.css">
+<link rel="stylesheet" href="../dist/css/swiper.min.css">
+
+<script>
+	function MM_openBrWindow(theURL,winName,features){ 
+		window.open(theURL,winName,features);
+	}
+</script>
+<style>
+	.material-symbols-outlined {
+	  font-variation-settings:
+	  'FILL' 0,
+	  'wght' 400,
+	  'GRAD' 0,
+	  'opsz' 48
+	}
+</style>
+<style>
+	@font-face{
+		font-family:gm3;
+		src:url(font/GmarketSansBold.woff)
+	}
+    @font-face{
+		font-family:gm2;
+		src:url(font/GmarketSansMedium.woff)
+	}
+    @font-face{
+		font-family:gm1;
+		src:url(font/GmarketSansLight.woff)
+	}
+</style>
+</head>
+<body>
+    <!-- <p id="txt1">0</p> -->
+	<div id="wrap">
+		<section id="p1">
+			<img class="img1 img" src="image/pc_01.png" alt="">
+		</section>
+
+		<section id="p2">
+			<img class="img2 img" src="image/pc_02.png" alt="">
+		</section>
+		<section id="p3">
+			<img class="img3 img"  src="image/pc_03.png" alt="">
+		</section>
+
+		<section id="p4">
+			<img class="img4 img" src="image/pc_04.png" alt="">
+		</section>
+
+
+		<section id="p8">
+			<div class="p8-in">
+				<form id="contact-form" action="../../ad/common/landing_page_update_100.asp" method="post" name="form0" id="contact-form">
+					<input type="hidden" id='l_idkey' name='l_idkey' value='<%=l_idkey%>'>
+					<input type="hidden" id="keyword" name="keyword" value="" />
+					<div class="formBg txtl">
+						<div class="formWrap">
+							<div class="form pdb50">
+								<article>
+									<fieldset style="border:none">
+										<legend>최고의 수익을 차지할 수 있는<br>급등주:100 프로젝트</legend>
+										<p class="form-sub">
+											<span class="red">최고의 전문가와 함께 만들어갑니다</span>
+										</p>
+										<div class="formBox">
+											<div class="formLeft " style="width:100%;">
+												<div class="name control-group top-name">
+													<div class="formLabel form2">
+													</div>
+									
+													<input type='text' class="name" name="NAME" id="NAME" minlength="2" maxlength="4" placeholder="이름을 입력해 주세요" />
+												</div>
+												<div class="phone control-group">
+													<div class="formLabel form2">
+													</div>
+													
+													<div class="p-box" style="display:inline-block">
+														<select name="HP1" id="HP1">
+															<option>010</option>
+															<option>011</option>
+															<option>016</option>
+															<option>017</option>
+															<option>018</option>
+															<option>019</option>
+														</select>
+														
+														<input type='tel' name="HP2" id="HP2" minlength="3" maxlength="4" placeholder="앞자리" />
+														
+														<input type='tel' name="HP3" id="HP3" maxlength="4" placeholder="뒷자리" />
+													</div>
+				
+													<div class="option-box pc">
+														<div class="select2">
+															<label>투자 성향</label>
+															<select name="q1" id="NAME2">
+																<option>단기 (공격적)</option>
+																<option>중기 (커버링)</option>
+																<option>장기 (보수적)</option>
+														</select>
+														</div>
+														
+														<div class="select2">
+															<label>운용 투자금</label>
+															<select name="q2" id="NAME2">
+																<option>1천만원 이하</option>
+																<option>1천만 ~ 3천만원</option>
+																<option>3천만 ~ 1억만원</option>
+																<option>1억 이상</option>
+														</select>
+														</div>
+															<label>관심 테마 및 섹터</label>
+															<input type='text' class="name" name="q3" id="NAME4" maxlength="10" placeholder="관심 테마를 입력해 주세요(최대 10글자)" />
+														
+													</div>
+												</div>
+												<div class="agree-box">
+													<div class="agree control-group">
+														<label>
+															<input type="checkbox" name="chk1" id="agree" value="0" checked>
+															[필수] 개인정보보호정책 및 마케팅정보 수신 동의
+														</label>
+														<a onclick="MM_openBrWindow('info.html','info','height=600, width=700,  scrollbars=yes, scrollbars=1, toolbar=no, resizable=1, menubar=no, location=no')">[보기]</a>
+			
+														<!--<a onclick="MM_openBrWindow('https://jlinvestment.co.kr/signup','info','height=600, width=700,  scrollbars=yes, scrollbars=1, toolbar=no, resizable=1, menubar=no, location=no')">자세히보기</a>-->
+													</div>
+												</div>
+												
+											</div><!--formLeft-->
+											<div class="formRight">
+												<div class="form_button btn">
+													<a onfocus="blur();" href="javascript:SubmitConfirm();">
+														캠페인 참가 신청하기
+													</a>
+												</div>
+												
+											</div><!--formRight-->
+										</div><!--formBox-->
+									</fieldset>
+								</article>
+							</div><!--form-->
+						</div><!--formWrap-->
+					</div><!--formBg-->
+				</form>
+			</div>
+			<img src="image/men.png" alt="" class="men">
+		</section>
+		<div class="quick_bottom_wrap" id="quick_pc">
+			<div class="quick_form" style="">
+				<form action="../common/landing_page_update_100.asp" method="post" name="form1" id="form1">
+				<input type="hidden" id='l_idkey' name='l_idkey' value='<%=l_idkey%>'>
+					<div class="form-box2">
+						<span class="q-left"><img src="image/q-left.png" alt=""></span>
+						<div class="form-input">
+								<div class="form-name">
+									<div class="name control-group">
+										<div style="text-align: left;position: relative;left: 14px;">
+											<input type="text" name="NAME" id="q-NAME" maxlength="10" placeholder="이름"/>
+										</div>
+									</div>
+								</div>
+								<div class="form-pass">
+									<div class="name control-group" style="float:left;position:relative;top:10px;">
+										<input type="text" name="hp" id="hp" class="hp" maxlength="11" placeholder="숫자만(-제외)"/>
+									</div>
+								</div>
+							<!--개인정보취급방침-->
+							<span class="row">
+								<label class="form-agree">
+									<input type="checkbox" id="chk" name="chk2" checked>
+									<span style="font-size:10.5px;">개인정보수집 및 마케팅 동의</span> 
+									<a onclick="MM_openBrWindow('info.html','info','height=600, width=700,  scrollbars=yes, scrollbars=1, toolbar=no, resizable=1, menubar=no, location=no')">[보기]</a>
+								</label>
+							</span>
+						</div>
+						<div class="form-command">
+							<button type="button" class="" onclick="SubmitConfirm1()" style="background: #000;"><img src="image/btn.png" alt=""></button>
+						</div>
+					</div>	
+				</form>
+			</div>
+		</div>
+		<footer>
+			<div class="f-in">
+				<h2 class="f-logo"><img src="image/logo.png" alt="푸터로고"></h2>
+				<div class="f-text">
+					(주)제이엘투자그룹 <span>|</span> 대표자 : 고태욱 <span>|</span> 사업자등록번호 : 676-87-01641<br>
+					통신판매업신고 : 2020-서울서초-0787호  <br>
+					주소 : 서울시 서초구 방배천로24길 11 명림빌딩 7층
+				</div>
+			</div>
+		</footer>
+	
+		
+	</div>
+                
+<!-- Script Source -->
+<script src="js/countUp.js" type="text/javascript"></script>
+<script src="js/common.js" type="text/javascript"></script>
+<script src="js/jquery-3.6.0.min.js"></script>
+<script src="js/main.js"></script>
+<script src="js/swiper.js"></script>
+
+<!-- NAVER SCRIPT -->
+<script type="text/javascript" src="//wcs.naver.net/wcslog.js"></script>
+<script type="text/javascript">
+if(!wcs_add) var wcs_add = {};
+wcs_add["wa"] = "s_22b522e7db45";
+if (!_nasa) var _nasa={};
+if (window.wcs) {
+    wcs.inflow("jlinvestad.com");
+    wcs_do(_nasa);
+	}
+
+</script>
+<!-- NAVER SCRIPT END -->
+
+<script>
+	$('#HP2').on('keyup', function() {
+		if(this.value.length == 4) {
+		   $('#HP3').focus()
+		}
+	});
+</script>
+
+</body>
+</html>                         
