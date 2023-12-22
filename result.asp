@@ -81,7 +81,7 @@ wcs_do(_nasa);
 <!-- NAVER SCRIPT END -->
     <div id="wrap">
         <div class="result">
-			<img src="image/re.png" alt="감사페이지">
+			<img src="image/re-mo.png" alt="감사페이지">
         </div>
    </div>
 <script src="js/jquery/jquery-1.7.2.min.js"></script>
